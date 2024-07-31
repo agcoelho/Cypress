@@ -6,9 +6,9 @@ describe('Página de Cadastro', () => {
 
 
     it('Preencher os campos incorretamente e exibir para o usuário', () => {
+
+        cy.login('afonsogcoelho@gmail.com', 'Baby123');
       
-      cy.get('[data-test="input-loginEmail"]').type('afonsogcoelho@gmail.com');
-      cy.get('[data-test="input-loginPassword"]').type('Baby123');
-      cy.get('[data-test="submit-button"]').click()
+      
     })
   })
