@@ -4,6 +4,26 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('[data-test="submit-button"]').click() 
 })
 
+Cypress.Commands.add('incorreto', () => { 
+    cy.visit('https://adopet-frontend-cypress.vercel.app/');
+    cy.get('[data-test="register-button"]').click();
+    cy.get('[data-test="submit-button"]').click();
+    cy.contains('É necessário informar um endereço de email').should('be.visible');
+    cy.contains('Crie uma senha').should('be.visible');
+    cy.contains('Repita a senha criada acima').should('be.visible');
+})
+
+Cypress.Commands.add('correto', (name, email, password, password_repeat) => { 
+    cy.visit('https://adopet-frontend-cypress.vercel.app/');
+    cy.get('[data-test="register-button"]').click();
+    cy.get('[data-test="input-name"]').type(name);
+    cy.get('[data-test="input-email"]').type(email);
+    cy.get('[data-test="input-password"]').type(password);
+    cy.get('[data-test="input-confirm-password"]').type(password_repeat);
+    cy.get('[data-test="submit-button"]').click();
+    
+})
+
 
 // ***********************************************
 // This example commands.js shows you how to
